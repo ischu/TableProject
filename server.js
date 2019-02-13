@@ -1,5 +1,6 @@
 var express = require("express");
 var path = require("path");
+var parser = require("body-parser");
 
 var app = express();
 var PORT = 3000;
@@ -64,11 +65,17 @@ app.post("/api/tables", function(req, res) {
     
         if(tables.length < 5) {
             tables.push(newTable)
+<<<<<<< HEAD
             res.send(true)
+=======
+>>>>>>> 7f32f292baa190cdf55efccad3ea93b1cb63f479
         }
         else if(tables.length === 5) {
             waitlist.push(newTable)
+<<<<<<< HEAD
             res.send(false)
+=======
+>>>>>>> 7f32f292baa190cdf55efccad3ea93b1cb63f479
         }
 
     res.json(newTable);

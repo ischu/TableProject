@@ -14,8 +14,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
     <script src="assets/javascript.js"></script>
 
 
@@ -27,120 +28,63 @@
             <h1 class="display-4 text-center">RESTURANTE GIGANTE</h1>
             <h3 class="lead text-center"> Reserve a seat NOW! </h3>
             <div class="text-center">
-            <a href="/reservations"><button type="button" class="btn btn-danger" id="reservation-btn"><i class="fa fa-table"></i> Make Reservation</button></a>
-            <a href = "/"><button type="button" class="btn btn-dark" id="home-btn"><i class="fas fa-home"></i></button></a>
+                <a href="/reservations"><button type="button" class="btn btn-danger" id="reservation-btn"><i
+                            class="fa fa-table"></i> Make Reservation</button></a>
+                <a href="/"><button type="button" class="btn btn-dark" id="home-btn"><i
+                            class="fas fa-home"></i></button></a>
             </div>
         </div>
     </div>
     <!-- Current Reservations -->
     <div class="row">
         <div class="col-md-8 mx-auto">
-        <div class="card">
-            <div class="card-header" id="current-reservations">
-            Current Reservations
-            </div>
-            <div id="tables">
-                <!-- Table 1 -->
-                <div class="card" id="table-1">
-                    <div class="card-body">
-                        This is some text within a card body.
-                    </div>
+            <div class="card">
+                <div class="card-header" id="current-reservations">
+                    Current Reservations
                 </div>
-                <!-- Table 2 -->
-                <div class="card" id="table-2">
-                    <div class="card-body">
-                        This is some text within a card body.
-                    </div>
+                <div id="tables">
                 </div>
-                <!-- Table 3 -->
-                <div class="card" id="table-3">
-                    <div class="card-body">
-                        This is some text within a card body.
-                    </div>
-                </div>
-                <!-- Table 4 -->
-                <div class="card" id="table-4">
-                    <div class="card-body">
-                        This is some text within a card body.
-                    </div>
-                </div>
-                <!-- Table 5 -->
-                <div class="card" id="table-5">
-                    <div class="card-body">
-                        This is some text within a card body.
-                    </div>
-                </div>
-            </div>
             </div>
         </div>
+    </div>
     </div>
     </div>
 
     <!-- Wait List -->
     <div class="row" id="wait-list">
-            <div class="col-md-8 mx-auto">
+        <div class="col-md-8 mx-auto">
             <div class="card">
                 <div class="card-header" id="current-reservations">
-                Wait List
+                    Wait List
                 </div>
                 <div id="tables">
-                    <!-- Table 1 -->
-                    <div class="card" id="table-1">
-                        <div class="card-body">
-                            This is some text within a card body.
-                        </div>
-                    </div>
-                    <!-- Table 2 -->
-                    <div class="card" id="table-2">
-                        <div class="card-body">
-                            This is some text within a card body.
-                        </div>
-                    </div>
-                    <!-- Table 3 -->
-                    <div class="card" id="table-3">
-                        <div class="card-body">
-                            This is some text within a card body.
-                        </div>
-                    </div>
-                    <!-- Table 4 -->
-                    <div class="card" id="table-4">
-                        <div class="card-body">
-                            This is some text within a card body.
-                        </div>
-                    </div>
-                    <!-- Table 5 -->
-                    <div class="card" id="table-5">
-                        <div class="card-body">
-                            This is some text within a card body.
-                        </div>
-                    </div>
-                </div>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
+    </div>
 </body>
 
 </html>
 
 <script>
 
-$.get("/api/tables", function(data) {
+    $.get("/api/tables", function (data) {
         for (var i = 0; i < data.length; i++) {
-          console.log(data[i]);
-          var newTable = $("<div class='card'>");
-          newTable.append($("<h3>").text(data[i].customerID));
-          $("#tables").append(newTable)
+            console.log(data[i]);
+            var newTable = $("<div class='card'>");
+            newTable.append($("<h3>").text(data[i].customerID));
+            $("#tables").append(newTable)
         }
     });
 
-$.get("/api/waitlist", function(data) {
-    for (var i = 0; i < data.length; i++) {
-        console.log(data[i]);
-        var newTable = $("<div class='card'>");
-        newTable.append($("<h3>").text(data[i].customerID));
-        $("#wait-list").append(newTable)
-    }
-});
+    $.get("/api/waitlist", function (data) {
+        for (var i = 0; i < data.length; i++) {
+            console.log(data[i]);
+            var newTable = $("<div class='card'>");
+            newTable.append($("<h3>").text(data[i].customerID));
+            $("#wait-list").append(newTable)
+        }
+    });
 
 </script>

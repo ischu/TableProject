@@ -28,3 +28,35 @@ var tables = [
     }
 ]
 
+var reservations = [
+    {
+        name: "",
+        phoneNumber: "",
+        customerEmail: "",
+        cutomerID: ""
+    }
+]
+
+app.get("/", function(res, req) {
+    res.sendFile(path.join(_dirname, "index.html"))
+});
+
+app.get("/tables", function(res, req) {
+    res.sendFile(path.join(_dirname, "tables.html"))
+});
+
+app.get("/reservation", function(res, req) {
+    res.sendFile(path.join(_dirname, "reservations.html"))
+});
+
+app.get("/api/tables", function(res, req) {
+    return res.json(tables)
+});
+
+app.get("/api/reservations", function(res, req) {
+    return res.json(reservations)
+});
+
+// app.post("/api/tables", function(res, req) {
+
+// })

@@ -67,7 +67,7 @@ app.post("/api/tables", function(req, res) {
             tables.push(newTable)
             alert("You have a reservation!")
         }
-        else if(i === 3) {
+        else if(i === 5) {
             waitlist.push(newTable)
             alert("Sorry, the reservation list full! You've been put on the waitlist!")
         }

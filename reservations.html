@@ -26,9 +26,11 @@
             <h1 class="display-4 text-center">RESTURANTE GIGANTE</h1>
             <h3 class="lead text-center"> Reserve a seat NOW! </h3>
             <div class="text-center">
-                    <a href = "/tables"> <button type="button" class="btn btn-primary" id="table-btn"><i class="far fa-hand-point-right"></i>
-                    View Tables</button></a>
-                <a href = "/"><button type="button" class="btn btn-dark" id="home-btn"><i class="fas fa-home"></i></button></a>
+                <a href="/tables"> <button type="button" class="btn btn-primary" id="table-btn"><i
+                            class="far fa-hand-point-right"></i>
+                        View Tables</button></a>
+                <a href="/"><button type="button" class="btn btn-dark" id="home-btn"><i
+                            class="fas fa-home"></i></button></a>
             </div>
         </div>
         <div class="card">
@@ -59,24 +61,27 @@
 
         </div>
     </div>
+    <footer class="text-center">
+        <a href="/api/tables">API Tables</a>|<a href="/api/waitlist">API Waitlist</a>
+    </footer>
 </body>
 
 </html>
 
 <script>
 
-$("#submit-btn").on("click", function() {
-    event.preventDefault()
-    var newTable = {
-        name: $("#name-input").val().trim(),
-        phoneNumber: $("#phone-input").val().trim(),
-        customerEmail: $("#email-input").val().trim(),
-        customerID: $("#id-input").val().trim()
-    }
-    $.post("/api/tables", newTable)
-        .then(function(data) {
-            console.log(data)
-        })
-})
+    $("#submit-btn").on("click", function () {
+        event.preventDefault()
+        var newTable = {
+            name: $("#name-input").val().trim(),
+            phoneNumber: $("#phone-input").val().trim(),
+            customerEmail: $("#email-input").val().trim(),
+            customerID: $("#id-input").val().trim()
+        }
+        $.post("/api/tables", newTable)
+            .then(function (data) {
+                console.log(data)
+            })
+    })
 
 </script>

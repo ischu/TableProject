@@ -63,11 +63,13 @@ app.post("/api/tables", function(req, res) {
     newTable.routeName = newTable.name.replace(/\s+/g, "").toLowerCase();
     
     for (var i = 0; i < tables.length; i++) {
-        if(i < 3) {
+        if(i < 5) {
             tables.push(newTable)
+            alert("You have a reservation!")
         }
         else if(i === 3) {
             waitlist.push(newTable)
+            alert("Sorry, the reservation list full! You've been put on the waitlist!")
         }
     };
 

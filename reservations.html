@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Reservr</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/styles.css" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css"
         integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
@@ -64,3 +64,21 @@
 </body>
 
 </html>
+
+<script>
+
+$("#submit-btn").on("click", function() {
+    event.preventDefault()
+    var newTable = {
+        name: $("#name-input").val().trim(),
+        phoneNumber: $("#phone-input").val().trim(),
+        customerEmail: $("#email-input").val().trim(),
+        customerID: $("#id-input").val().trim()
+    }
+    $.post("/api/tables", newTable)
+        .then(function(data) {
+            console.log(data)
+        })
+})
+
+</script>

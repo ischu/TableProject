@@ -28,7 +28,7 @@ var tables = [
     }
 ]
 
-var reservations = [
+var waitlist = [
     {
         name: "",
         phoneNumber: "",
@@ -53,26 +53,27 @@ app.get("/api/tables", function(req, res) {
     return res.json(tables)
 });
 
-app.get("/api/reservations", function(req, res) {
-    return res.json(reservations)
+app.get("/api/waitlist", function(req, res) {
+    return res.json(waitlist)
 });
 
 app.post("/api/tables", function(req, res) {
     var newTable = req.body;
 
     newTable.routeName = newTable.name.replace(/\s+/g, "").toLowerCase();
-
-    console.log(newTable);
     
     for (var i = 0; i < tables.length; i++) {
         if(i < 5) {
             tables.push(newTable)
+            alert("You have a reservation!")
         }
-        else if(i === 5) {
-            reservations.push(newTable)
+        else if(i === 3) {
+            waitlist.push(newTable)
+            alert("Sorry, the reservation list full! You've been put on the waitlist!")
         }
-    }
+    };
 
+    res.json(newTable);
 });
 
 app.listen(PORT, function() {

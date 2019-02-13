@@ -1,5 +1,6 @@
 var express = require("express");
 var path = require("path");
+var parser = require("body-parser");
 
 var app = express();
 var PORT = 3000;
@@ -65,11 +66,9 @@ app.post("/api/tables", function(req, res) {
     for (var i = 0; i < tables.length; i++) {
         if(i < 5) {
             tables.push(newTable)
-            alert("You have a reservation!")
         }
         else if(i === 5) {
             waitlist.push(newTable)
-            alert("Sorry, the reservation list full! You've been put on the waitlist!")
         }
     };
 

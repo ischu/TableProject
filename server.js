@@ -37,26 +37,44 @@ var reservations = [
     }
 ]
 
-app.get("/", function(res, req) {
-    res.sendFile(path.join(_dirname, "index.html"))
+app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "index.html"))
 });
 
-app.get("/tables", function(res, req) {
-    res.sendFile(path.join(_dirname, "tables.html"))
+app.get("/tables", function(req, res) {
+    res.sendFile(path.join(__dirname, "tables.html"))
 });
 
-app.get("/reservation", function(res, req) {
-    res.sendFile(path.join(_dirname, "reservations.html"))
+app.get("/reservation", function(req, res) {
+    res.sendFile(path.join(__dirname, "reservations.html"))
 });
 
-app.get("/api/tables", function(res, req) {
+app.get("/api/tables", function(req, res) {
     return res.json(tables)
 });
 
-app.get("/api/reservations", function(res, req) {
+app.get("/api/reservations", function(req, res) {
     return res.json(reservations)
 });
 
-// app.post("/api/tables", function(res, req) {
+app.post("/api/tables", function(req, res) {
+    var newTable = req.body;
 
-// })
+    newTable.routeName = newTable.name.replace(/\s+/g, "").toLowerCase();
+
+    console.log(newTable);
+    
+    for (var i = 0; i < tables.length; i++) {
+        if(i < 5) {
+            tables.push(newTable)
+        }
+        else if(i === 5) {
+            reservations.push(newTable)
+        }
+    }
+
+});
+
+app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+});

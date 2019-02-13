@@ -122,3 +122,25 @@
 </body>
 
 </html>
+
+<script>
+
+$.get("/api/tables", function(data) {
+        for (var i = 0; i < data.length; i++) {
+          console.log(data[i]);
+          var newTable = $("<div class='card'>");
+          newTable.append($("<h3>").text(data[i].customerID));
+          $("#tables").append(newTable)
+        }
+    });
+
+$.get("/api/waitlist", function(data) {
+    for (var i = 0; i < data.length; i++) {
+        console.log(data[i]);
+        var newTable = $("<div class='card'>");
+        newTable.append($("<h3>").text(data[i].customerID));
+        $("#wait-list").append(newTable)
+    }
+});
+
+</script>
